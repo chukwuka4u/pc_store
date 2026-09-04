@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom'
 import { useCart } from '../context/CartContext.jsx'
+import logo from '../../public/logo.png'
 
 export default function Nav() {
   const { count } = useCart()
@@ -9,7 +10,7 @@ export default function Nav() {
       <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="font-extrabold text-xl tracking-tight">
           <img
-          src={"../../public/logo.png"}
+          src={logo}
           alt="Poshcady"
           className="w-16 h-auto"
         />

@@ -79,7 +79,7 @@ export default function Shop() {
           The Everyday Sweatshirt
         </h1>
         <p className="text-stone max-w-md mx-auto">
-          One relaxed, oversized fit. Heavyweight brushed fleece. Available in
+          One relaxed fit. Quality plain sweatshirts. Available in
           six colorways.
         </p>
       </section>

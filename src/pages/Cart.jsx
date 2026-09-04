@@ -96,7 +96,7 @@ export default function Cart() {
           then make payment and send receipt. <br />
           <span> 6370669097 </span> <br />
           Fidelity Bank <br />
-          Account Name: CHUKWUKADIBIA EMMANUEL MADUABUCHUKWU <br />
+          Account Name: EMMANUEL MADUABUCHUKWU <br />
           NB: all deliveries are made on weekends. 
           Thanks for shopping with Poshcady.
         </p>
