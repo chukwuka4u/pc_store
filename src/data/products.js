@@ -1,0 +1,58 @@
+const products = [
+  {
+    id: 'clay',
+    name: 'Clay Sweatshirt',
+    color: 'Clay',
+    price: 58,
+    image: '/images/sweatshirt-clay.jpg',
+    swatch: '#7A5A3F',
+    description: 'A heavyweight, oversized-fit sweatshirt in warm clay brown. Brushed fleece interior, ribbed cuffs and hem.',
+  },
+  {
+    id: 'moss',
+    name: 'Moss Sweatshirt',
+    color: 'Moss Green',
+    price: 58,
+    image: '/images/sweatshirt-moss.jpg',
+    swatch: '#0da862',
+    description: 'The same relaxed, oversized fit in deep moss green. Brushed fleece interior, ribbed cuffs and hem.',
+  },
+  {
+    id: 'slate',
+    name: 'Slate Sweatshirt',
+    color: 'Slate Grey',
+    price: 58,
+    image: '/images/sweatshirt-slate.jpg',
+    swatch: '#54524E',
+    description: 'A cool, mid-tone grey colorway. Brushed fleece interior, ribbed cuffs and hem, oversized fit.',
+  },
+  {
+    id: 'jet',
+    name: 'Jet Sweatshirt',
+    color: 'Jet Black',
+    price: 58,
+    image: '/images/sweatshirt-jet.jpg',
+    swatch: '#111111',
+    description: 'The same relaxed, oversized fit in deep jet black. Brushed fleece interior, ribbed cuffs and hem.',
+  },
+  {
+    id: 'smoke',
+    name: 'Smoke Sweatshirt',
+    color: 'Smoke Ash',
+    price: 58,
+    image: '/images/sweatshirt-smoke.jpg',
+    swatch: '#A9A296',
+    description: 'A soft, warm ash grey colorway. Brushed fleece interior, ribbed cuffs and hem, oversized fit.',
+  },
+  {
+    id: 'denim',
+    name: 'Denim Sweatshirt',
+    color: 'Denim Blue',
+    price: 58,
+    image: '/images/sweatshirt-denim.jpg',
+    swatch: '#2E4358',
+    description: 'A deep, muted denim blue colorway. Brushed fleece interior, ribbed cuffs and hem, oversized fit.',
+  },
+]
+
+export default products
