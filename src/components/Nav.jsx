@@ -8,7 +8,11 @@ export default function Nav() {
     <header className="border-b border-line bg-paper sticky top-0 z-40">
       <div className="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
         <Link to="/" className="font-extrabold text-xl tracking-tight">
-          Poshcady
+          <img
+          src={"../../public/logo.png"}
+          alt="Poshcady"
+          className="w-16 h-auto"
+        />
         </Link>
 
         <nav className="flex items-center gap-6 text-sm font-medium">

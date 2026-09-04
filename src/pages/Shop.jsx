@@ -6,7 +6,7 @@ const SIZES = ['L', 'XL', '2XL', '3XL']
 
 function ProductCard({ product }) {
   const { addItem } = useCart()
-  const [size, setSize] = useState('M')
+  const [size, setSize] = useState('2XL')
   const [added, setAdded] = useState(false)
 
   function handleAdd() {
@@ -31,7 +31,7 @@ function ProductCard({ product }) {
             <h3 className="font-semibold text-lg leading-tight">{product.name}</h3>
             <p className="text-sm text-stone">{product.color}</p>
           </div>
-          <p className="font-semibold">${product.price}</p>
+          <p className="font-semibold">₦{product.price}</p>
         </div>
 
         <p className="text-sm text-stone leading-relaxed">{product.description}</p>
@@ -41,12 +41,15 @@ function ProductCard({ product }) {
             {SIZES.map((s) => (
               <button
                 key={s}
+                disabled={s != '2XL'}
                 onClick={() => setSize(s)}
                 className={`w-9 h-9 rounded-full text-xs font-medium border transition-colors ${
                   size === s
                     ? 'bg-ink text-paper border-ink'
                     : 'border-line text-ink hover:border-ink'
-                }`}
+                }
+                ${s != '2XL' ?  'opacity-30 cursor-not-allowed' : 'opacity-100' }
+                `}
               >
                 {s}
               </button>
