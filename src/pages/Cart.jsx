@@ -54,6 +54,7 @@ export default function Cart() {
   const { items, subtotal } = useCart()
   const [placed, setPlaced] = useState(false)
   const [orderId, setOrderId] = useState(null)
+  const [loading, setLoading] = useState(false)
 
   const shipping = items.length === 0 ? 0 : 2000
   const total = subtotal + shipping
@@ -148,14 +149,23 @@ export default function Cart() {
 
             <button
               onClick={() => {
-                writeOrder(items).then((id) => {
+                try {
+                  setLoading(true)
+                  writeOrder(items).then((id) => {
+                    setOrderId(id);
+                  });
+                }
+                catch (error) {
+                  console.error("Error placing order: ", error);
+                }
+                finally {
                   setPlaced(true);
-                  setOrderId(id);
-                });
+                  setLoading(false)
+                }
               }}
               className="w-full mt-4 py-3 rounded-full bg-ink text-paper font-medium hover:bg-accent transition-colors"
             >
-              Checkout
+              {loading ? "Placing Order..." : "Checkout"}
             </button>
           </div>
         </>
