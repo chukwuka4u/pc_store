@@ -71,37 +71,11 @@ export default function Cart() {
     }
   }, [orderId]);
 
-  // function copyToClipboard() {
-  //       const textToCopy = orderId;
-  //       navigator.clipboard.writeText(textToCopy)
-  //           .then(() => {
-  //               alert("Text copied to clipboard!");
-  //           })
-  //           .catch((err) => {
-  //               console.error("Failed to copy text: ", err);
-  //           })
-  //           .finally(() => close);
-  // };
-
   if (placed) {
     return (
       <main className="max-w-md mx-auto px-6 py-28 text-center">
         <h1 className="text-3xl font-extrabold mb-3">Processing your order... ✓</h1>
         <div className="text-stone mb-8">
-          {/* <div className="mt-4">
-            <p className="text-sm">
-                Your order number is: {orderId}
-            </p>
-            <button
-                onClick={copyToClipboard}
-            >
-                <div>
-                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="size-6">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 7.5V6.108c0-1.135.845-2.098 1.976-2.192.373-.03.748-.057 1.123-.08M15.75 18H18a2.25 2.25 0 0 0 2.25-2.25V6.108c0-1.135-.845-2.098-1.976-2.192a48.424 48.424 0 0 0-1.123-.08M15.75 18.75v-1.875a3.375 3.375 0 0 0-3.375-3.375h-1.5a1.125 1.125 0 0 1-1.125-1.125v-1.5A3.375 3.375 0 0 0 6.375 7.5H5.25m11.9-3.664A2.251 2.251 0 0 0 15 2.25h-1.5a2.251 2.251 0 0 0-2.15 1.586m5.8 0c.065.21.1.433.1.664v.75h-6V4.5c0-.231.035-.454.1-.664M6.75 7.5H4.875c-.621 0-1.125.504-1.125 1.125v12c0 .621.504 1.125 1.125 1.125h9.75c.621 0 1.125-.504 1.125-1.125V16.5a9 9 0 0 0-9-9Z" />
-                    </svg>
-                </div>
-            </button>
-          </div> */}
           <p>Redirecting you to WhatsApp to complete your order #{orderId}</p>
         </div>
         <Link
@@ -151,22 +125,24 @@ export default function Cart() {
             </div>
 
             <button
+              disabled={loading}
               onClick={() => {
+                setLoading(true)
                 try {
-                  setLoading(true)
-                  writeOrder(items).then((id) => {
-                    setOrderId(id);
-                    setPlaced(true);
-                  });
+                  setTimeout(() => {}, 1400)
                 }
                 catch (error) {
                   console.error("Error placing order: ", error);
                 }
                 finally {
+                  writeOrder(items).then((id) => {
+                    setOrderId(id);
+                    setPlaced(true);
+                  });
                   setLoading(false)
                 }
               }}
-              className="w-full mt-4 py-3 rounded-full bg-ink text-paper font-medium hover:bg-accent transition-colors"
+              className="w-full mt-4 py-3 rounded-full bg-ink text-paper font-medium active:bg-accent transition-colors"
             >
               {loading ? "Placing Order..." : "Checkout"}
             </button>
