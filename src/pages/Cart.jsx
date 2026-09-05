@@ -1,7 +1,9 @@
+"use client"
 import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import { useCart } from '../context/CartContext.jsx'
 import { writeOrder } from '../lib/config/firebase/app.js'
+import { useEffect } from 'react'
 
 function CartRow({ item }) {
   const { updateQty, removeItem } = useCart()
@@ -58,25 +60,35 @@ export default function Cart() {
 
   const shipping = items.length === 0 ? 0 : 2000
   const total = subtotal + shipping
+  const phoneNumber = "07035710986";
   
-  function copyToClipboard() {
-        const textToCopy = orderId;
-        navigator.clipboard.writeText(textToCopy)
-            .then(() => {
-                alert("Text copied to clipboard!");
-            })
-            .catch((err) => {
-                console.error("Failed to copy text: ", err);
-            })
-            .finally(() => close);
-    };
+  useEffect(() => {
+    if (orderId) {
+      const message = `Hello, I would like to place an order. My order number is: ${orderId}`;
+      const encodedMessage = encodeURIComponent(message);
+      const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+      window.location.href = whatsappUrl;
+    }
+  }, [orderId]);
+
+  // function copyToClipboard() {
+  //       const textToCopy = orderId;
+  //       navigator.clipboard.writeText(textToCopy)
+  //           .then(() => {
+  //               alert("Text copied to clipboard!");
+  //           })
+  //           .catch((err) => {
+  //               console.error("Failed to copy text: ", err);
+  //           })
+  //           .finally(() => close);
+  // };
 
   if (placed) {
     return (
       <main className="max-w-md mx-auto px-6 py-28 text-center">
-        <h1 className="text-3xl font-extrabold mb-3">Order placed ✓</h1>
-        <p className="text-stone mb-8">
-          <div className="mt-4">
+        <h1 className="text-3xl font-extrabold mb-3">Processing your order... ✓</h1>
+        <div className="text-stone mb-8">
+          {/* <div className="mt-4">
             <p className="text-sm">
                 Your order number is: {orderId}
             </p>
@@ -89,18 +101,9 @@ export default function Cart() {
                     </svg>
                 </div>
             </button>
-          </div>
-          <br />
-          First send your order number to: <a href="https://wa.me/07035710986" className="text-ink underline">
-          Whatsapp
-          </a> <br />
-          then make payment and send receipt. <br />
-          <span> 6370669097 </span> <br />
-          Fidelity Bank <br />
-          Account Name: EMMANUEL MADUABUCHUKWU <br />
-          NB: all deliveries are made on weekends. 
-          Thanks for shopping with Poshcady.
-        </p>
+          </div> */}
+          <p>Redirecting you to WhatsApp to complete your order #{orderId}</p>
+        </div>
         <Link
           to="/"
           className="inline-block px-6 py-3 rounded-full bg-ink text-paper font-medium hover:bg-accent transition-colors"
@@ -153,13 +156,13 @@ export default function Cart() {
                   setLoading(true)
                   writeOrder(items).then((id) => {
                     setOrderId(id);
+                    setPlaced(true);
                   });
                 }
                 catch (error) {
                   console.error("Error placing order: ", error);
                 }
                 finally {
-                  setPlaced(true);
                   setLoading(false)
                 }
               }}
